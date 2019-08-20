@@ -18,6 +18,7 @@ Dado que eu tenho R$ 500 em minha conta corrente
 Quando faço um saque de R$ 501
 Então vejo a mensagem "Saldo insuficiente para saque :("
 E meu saldo final deve ser R$ 500
+
 Cenário: Limite por saque :(
 
 Dado que eu tenho R$ 1000 em minha conta corrente
