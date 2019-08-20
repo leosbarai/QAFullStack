@@ -1,5 +1,9 @@
 require_relative "../../app/bank" #importando o arquivo
 
+# rspec --format html --out report.html (para gerar um relatório do resultado em HTML) ou
+# rspec --format RspecJunitFormatter --out report.xml (instalar a gem rspec_junit_formatter)
+# se adicionar o -fd ao final do comando, também executa no terminal
+
 describe ContaPoupanca do
   describe "Saque" do
     context "quando o valor é positivo" do
