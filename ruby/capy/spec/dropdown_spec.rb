@@ -1,4 +1,4 @@
-describe "Caixa de seleção", :dropdown do # :dropdown é a tag para o método
+describe "Caixa de opções", :dropdown do # :dropdown é a tag para o método
   it "item específico simples" do
     visit "https://training-wheels-protocol.herokuapp.com/dropdown"
 
