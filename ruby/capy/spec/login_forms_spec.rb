@@ -1,4 +1,4 @@
-describe "Forms" do
+describe "Forms", :lform do
   it "login com sucesso" do
     visit "/login"
 
@@ -17,6 +17,8 @@ describe "Forms" do
 
     # verifica se no conteúdo contém o texto da mensagem
     expect(find("#flash")).to have_content "Olá, Tony Stark. Você acessou a área logada!"
+
+    # page.save_screenshot("log/login_com_sucesso.png") # tira um screenshot
   end
 
   it "senha incorreta" do

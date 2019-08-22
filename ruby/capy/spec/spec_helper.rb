@@ -17,10 +17,15 @@ RSpec.configure do |config|
   config.before(:example) do
     page.current_window.resize_to(1280, 800)
   end
+
+  config.after(:example) do |e|
+    nome = e.description.gsub(/[^A-Za-z0-9 ]/, "").tr(" ", "_") # regex para substituir caracteres especiais por nada
+    page.save_screenshot("log/" + nome + ".png")
+  end
 end
 
 Capybara.configure do |config|
-  config.default_driver = :selenium_chrome
+  config.default_driver = :selenium_chrome_headless # o _headless não levanta o navegadorg
   config.default_max_wait_time = 15
   config.app_host = "https://training-wheels-protocol.herokuapp.com/"
 end
