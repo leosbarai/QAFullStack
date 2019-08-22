@@ -37,8 +37,8 @@ describe "Alertas de JS", :alerts do
     expect(page).to have_content "Olá, Leonardo"
   end
 
-  it "nega prompt", :negacao do
-    dismiss_prompt() do # aceita o prompt com o conteúdo Leonardo quando clicar no botão Prompt
+  it "nega prompt" do
+    dismiss_prompt() do # negar o prompt com o conteúdo Leonardo quando clicar no botão Prompt
       click_button "Prompt"
     end
 
