@@ -1,6 +1,6 @@
 describe "IDs Dinamicos", :ids_dinamicos do
   before(:each) do
-    visit "https://training-wheels-protocol.herokuapp.com/access"
+    visit "/access"
   end
 
   # Para IDs dinâmicos, o ideal é trabalhar com regex para utilizar o trecho imutável da tag

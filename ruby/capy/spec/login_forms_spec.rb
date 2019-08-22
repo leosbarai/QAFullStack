@@ -1,6 +1,6 @@
 describe "Forms" do
   it "login com sucesso" do
-    visit "https://training-wheels-protocol.herokuapp.com/login"
+    visit "/login"
 
     fill_in "userId", with: "stark"     #escrever no campo usando a tag id
     fill_in "password", with: "jarvis!" #escrever no campo usando a tag name
@@ -20,7 +20,7 @@ describe "Forms" do
   end
 
   it "senha incorreta" do
-    visit "https://training-wheels-protocol.herokuapp.com/login"
+    visit "/login"
 
     fill_in "userId", with: "stark"
     fill_in "password", with: "jarvis"
@@ -32,7 +32,7 @@ describe "Forms" do
   end
 
   it "usuário não cadastrado" do
-    visit "https://training-wheels-protocol.herokuapp.com/login"
+    visit "/login"
 
     fill_in "userId", with: "tony"
     fill_in "password", with: "jarvis"

@@ -1,6 +1,6 @@
 describe "Caixa de opções", :dropdown do # :dropdown é a tag para o método
   it "item específico simples" do
-    visit "https://training-wheels-protocol.herokuapp.com/dropdown"
+    visit "/dropdown"
 
     # select('Opção', from: 'elemento') para selecionar uma das opções do dropdown do tipo select através do id do elemento
     select("Loki", from: "dropdown")
@@ -8,7 +8,7 @@ describe "Caixa de opções", :dropdown do # :dropdown é a tag para o método
   end
 
   it "item especifico com o find" do
-    visit "https://training-wheels-protocol.herokuapp.com/dropdown"
+    visit "/dropdown"
 
     drop = find(".avenger-list") #buscando pela classe do dropdown
     drop.find("option", text: "Scott Lang").select_option
@@ -16,7 +16,7 @@ describe "Caixa de opções", :dropdown do # :dropdown é a tag para o método
   end
 
   it "qualquer item", :samples do #tag para o método
-    visit "https://training-wheels-protocol.herokuapp.com/dropdown"
+    visit "/dropdown"
 
     drop = find(".avenger-list")
 

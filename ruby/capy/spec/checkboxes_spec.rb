@@ -1,6 +1,6 @@
 describe "Caixas de seleção", :checkbox do
   before(:each) do # sempre será executado antes de cada iteração
-    visit "https://training-wheels-protocol.herokuapp.com/checkboxes"
+    visit "/checkboxes"
   end
 
   it "marcando uma opção" do

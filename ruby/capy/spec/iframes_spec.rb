@@ -1,7 +1,7 @@
 describe "iframes" do
   describe "bom", :nice do
     before(:each) do
-      visit "https://training-wheels-protocol.herokuapp.com/nice_iframe"
+      visit "/nice_iframe"
     end
 
     it "adicionar ao carrinho" do
@@ -15,7 +15,7 @@ describe "iframes" do
 
   describe "ruim", :bad_iframe do # quando o iframe não tem ID
     before(:each) do
-      visit "https://training-wheels-protocol.herokuapp.com/bad_iframe"
+      visit "/bad_iframe"
     end
 
     it "deve estar vazio" do
