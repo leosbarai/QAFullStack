@@ -1,6 +1,7 @@
 describe "get" do
   context "buscar cidades", :cidades do
-    let(:result) { ApiUser.busca_cidades("Campinas", "1") }
+    let(:cidades) { build(:cidades) }
+    let(:result) { ApiUser.busca_cidades(cidades.cidade, cidades.limite) }
 
     it { expect(result.response.code).to eql "200" }
     it { expect((result.parsed_response[0]["id"])).to eql 952 }
