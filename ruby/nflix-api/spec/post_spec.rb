@@ -1,43 +1,61 @@
 describe "post" do
   context "when new user" do
     before do
-      @new_user = build(:user) # build a factory chamada :user       #=>  massa utilizada anteriormente { full_name: "Leonardo Sbarai", email: "leonardo.sbarai@dextra-sw.com", password: "jedi123" }
-      Database.new.delete_user(@new_user[:email])
-
-      @result = HTTParty.post(
-        "http://192.168.99.100:3001/user",
-        body: @new_user.to_json,
-        headers: {
-          "Content-Type" => "application/json",
-        },
-      )
+      @new_user = build(:user).to_hash # build a factory chamada :user já convertendo pra hash
+      @result = ApiUser.save(@new_user)
     end
 
-    # retorna a mesma mensagem, porém, em inglês
     it { expect(@result.response.code).to eql "200" }
+  end
 
-    # it "então deve retornar 200" do
-    #   expect(@result.response.code).to eql "200"
-    # end
+  context "when duplicate email" do
+    before do
+      @new_user = build(:registered_user).to_hash
+      @result = ApiUser.save(@new_user)
+    end
+
+    it { expect(@result.response.code).to eql "409" }
+    it { expect(@result.parsed_response["msg"]).to eql "Oops. Looks like you already have an account with this email adress." }
+  end
+
+  context "when wrong email" do
+    before do
+      @new_user = build(:user_wrong_email).to_hash
+      @result = ApiUser.save(@new_user)
+    end
+
+    it { expect(@result.response.code).to eql "412" }
+    # o parsed_response já pega a mensagem no formato hash de chave : valor para validar a msg de erro
+    it { expect(@result.parsed_response["msg"]).to eql "Oops. You entered a wrong email." }
+  end
+
+  context "when empty name" do
+    before do
+      @new_user = build(:empty_name_user).to_hash
+      @result = ApiUser.save(@new_user)
+    end
+
+    it { expect(@result.response.code).to eql "412" }
+    it { expect(@result.parsed_response["msg"]).to eql "Validation notEmpty on full_name failed" }
+  end
+
+  context "when empty email" do
+    before do
+      @new_user = build(:empty_email_user).to_hash
+      @result = ApiUser.save(@new_user)
+    end
+
+    it { expect(@result.response.code).to eql "412" }
+    it { expect(@result.parsed_response["msg"]).to eql "Validation notEmpty on email failed" }
+  end
+
+  context "when empty password" do
+    before do
+      @new_user = build(:empty_password_user).to_hash
+      @result = ApiUser.save(@new_user)
+    end
+
+    it { expect(@result.response.code).to eql "412" }
+    it { expect(@result.parsed_response["msg"]).to eql "Validation notEmpty on password failed" }
   end
 end
-
-# describe "cadastro" do
-#   it "novo usuário" do
-#     # chama o script para deletar a massa de testes
-#     Database.new.delete_user("eu@papito.io")
-
-#     # testar o método POST informando o ENDPOINT, o body e headers conforme documentação da API
-#     result = HTTParty.post(
-#       "http://192.168.99.100:3001/user",
-#       body: { full_name: "Fernando Papito", email: "eu@papito.io", password: "123456" }.to_json, #convertendo para o formato JSON
-#       headers: {
-#         "Content-Type" => "application/json",
-#       },
-#     )
-#     # exibe o retorno da mensagem da API
-#     puts result
-#     # confere se o retorno da API é 200
-#     expect(result.response.code).to eql "200"
-#   end
-# end
