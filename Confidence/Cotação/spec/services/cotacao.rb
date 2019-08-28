@@ -1,4 +1,4 @@
-class ApiUser
+class ApiCotacao
   include HTTParty
   base_uri "https://api.tihum.com/cotacao/api"
   headers "Content-Type" => "application/json"
