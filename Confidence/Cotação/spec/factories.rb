@@ -1,5 +1,6 @@
 require_relative "models/cidades_model"
 require_relative "models/moeda_operacional_model"
+require_relative "models/paises_model"
 
 FactoryBot.define do
   factory :cidades, class: CidadesModel do
@@ -17,5 +18,9 @@ FactoryBot.define do
 
   factory :pais_moeda_operacional, class: MoedaOperacionalModel do
     pais_id { 122 }
+  end
+
+  factory :pais_id, class: PaisesModel do
+    id { 76 }
   end
 end

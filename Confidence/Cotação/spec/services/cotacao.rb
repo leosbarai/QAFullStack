@@ -14,4 +14,8 @@ class ApiCotacao
   def self.busca_moedas_operacionais_rem(pais_id)
     get("/v1/moedas-operacionais?tipo=Remessa&pais_id=#{pais_id}")
   end
+
+  def self.busca_moedas_do_pais(pais_id)
+    get("/v1/paises/#{pais_id}/moedas")
+  end
 end

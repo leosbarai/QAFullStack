@@ -1,5 +1,5 @@
 describe "get", :moeda_op do
-  context "garantir cotação cartão" do
+  context "consultas relacionadas a moeda operacional" do
     let(:cartao) { build(:moeda_operacional_cartao) }
     let(:result) { ApiCotacao.busca_moedas_operacionais(cartao.tipo) }
 
