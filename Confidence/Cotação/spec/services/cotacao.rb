@@ -18,4 +18,9 @@ class ApiCotacao
   def self.busca_moedas_do_pais(pais_id)
     get("/v1/paises/#{pais_id}/moedas")
   end
+
+  def self.busca_produto_cidade(tipo_produto, cidade_id)
+    #get("/v1/produtos/cotacoes/Especie?produto=#{tipo_produto}&cidade_id=#{cidade_id}")
+    get("/v1/produtos/cotacoes/#{tipo_produto}?cidade_id=#{cidade_id}")
+  end
 end
