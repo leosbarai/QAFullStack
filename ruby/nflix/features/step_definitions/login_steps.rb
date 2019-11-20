@@ -23,7 +23,7 @@ end
 Então("não devo ser autenticado") do
   js_script = 'return window.localStorage.getItem("default_auth_token");'
   token = page.execute_script(js_script)
-  expect(token.length).to be nil
+  expect(token).to be nil
 end
 
 Então("devo ver a mensagem de alerta {string}") do |expect_message|
